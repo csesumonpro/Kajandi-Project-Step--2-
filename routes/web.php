@@ -252,12 +252,12 @@ Route::get('/edit-page/{id}','PageBuilderController@edit_page')->name('edit-page
 //Page Builder Route End
 
 //Blog Route Start
-Route::get('add-category','BlogCategoryController@add_category')->name('add-blog-category');
-Route::post('save-category','BlogCategoryController@save_category')->name('save-blog-category');
-Route::get('category-list','BlogCategoryController@category_list')->name('blog-category-list');
-Route::get('delete-category/{id}','BlogCategoryController@category_delete')->name('delete-blog-category');
-Route::get('edit-category/{id}','BlogCategoryController@category_edit')->name('edit-blog-category');
-Route::post('update-category','BlogCategoryController@category_update')->name('update-blog-category');
+Route::get('add-blog-category','BlogCategoryController@add_category')->name('add-blog-category');
+Route::post('save-blog-category','BlogCategoryController@save_category')->name('save-blog-category');
+Route::get('blog-category-list','BlogCategoryController@category_list')->name('blog-category-list');
+Route::get('delete-blog-category/{id}','BlogCategoryController@category_delete')->name('delete-blog-category');
+Route::get('edit-blog-category/{id}','BlogCategoryController@category_edit')->name('edit-blog-category');
+Route::post('update-blog-category','BlogCategoryController@category_update')->name('update-blog-category');
 
 Route::get('add-blog','BlogCategoryController@add_blog')->name('add-blog');
 Route::post('save-blog','BlogCategoryController@save_blog')->name('save-blog');

@@ -27,8 +27,8 @@
                             <td>{{$i}}</td>
                             <td>{{$category->name}}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{url('/edit-category/'.$category->id)}}"><i class="fa fa-edit"></i>Edit</a>
-                                <a class="btn btn-danger" href="{{url('/delete-category/'.$category->id)}}"><i class="fa fa-trash-o"></i>Delete </a>
+                                <a class="btn btn-primary" href="{{url('/edit-blog-category/'.$category->id)}}"><i class="fa fa-edit"></i>Edit</a>
+                                <a class="btn btn-danger" href="{{url('/delete-blog-category/'.$category->id)}}"><i class="fa fa-trash-o"></i>Delete </a>
                             </td>
                         </tr>
                     @endforeach

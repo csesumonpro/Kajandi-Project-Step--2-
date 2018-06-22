@@ -9,7 +9,7 @@
                     <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
                 </small>
             </div>
-            {!! Form::open(['method'=>'POST','url'=>'save-category','enctype'=>'multipart/form-data']) !!}
+            {!! Form::open(['method'=>'POST','url'=>'save-blog-category','enctype'=>'multipart/form-data']) !!}
             <div class="card-body card-block">
                 <div class="form-group">
                     <label for="company" class=" form-control-label">Add New Category</label>

@@ -23,7 +23,7 @@ class BlogCategoryController extends Controller
         $category = new BlogCategory();
         $category->name = $request->name;
         $category->save();
-        return redirect('/add-category')->with('message_success','Category Added Successfully');
+        return redirect('/add-blog-category')->with('message_success','Category Added Successfully');
     }
     public function category_list(){
         $category_list = BlogCategory::all();
@@ -32,7 +32,7 @@ class BlogCategoryController extends Controller
     public function category_delete($id){
         $category = BlogCategory::where('id',$id)->first();
         $category->delete();
-        return redirect('/category-list')->with('message_success','Category Deleted Successfully');
+        return redirect('/blog-category-list')->with('message_success','Category Deleted Successfully');
     }
     public function category_edit($id){
         $category_by_id = BlogCategory::where('id',$id)->first();
@@ -45,7 +45,7 @@ class BlogCategoryController extends Controller
         $category = BlogCategory::where('id',$request->id)->first();
         $category->name = $request->name;
         $category->save();
-        return redirect('/edit-category/'.$category->id)->with('message_success','Category Updated Successfully');
+        return redirect('/edit-blog-category/'.$category->id)->with('message_success','Category Updated Successfully');
     }
 
     public function add_blog(){

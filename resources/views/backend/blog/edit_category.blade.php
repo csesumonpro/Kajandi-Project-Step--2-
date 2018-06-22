@@ -9,7 +9,7 @@
                     <p class="text-center  alert-danger">{{Session::get('message_error')}}</p>
                 </small>
             </div>
-            {!! Form::open(['method'=>'POST','url'=>'update-category','enctype'=>'multipart/form-data']) !!}
+            {!! Form::open(['method'=>'POST','url'=>'update-blog-category','enctype'=>'multipart/form-data']) !!}
             <div class="card-body card-block">
                 <div class="form-group">
                     <label for="company" class=" form-control-label">Update Category Title</label>
