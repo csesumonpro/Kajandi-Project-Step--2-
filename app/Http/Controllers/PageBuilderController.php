@@ -17,7 +17,7 @@ class PageBuilderController extends Controller{
        $request->validate([
            'name' => 'required|max:255|min:2',
            'description' => 'required',
-           'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          // 'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
        ]);
 
        $file = $request->file( 'image' );
@@ -70,7 +70,7 @@ class PageBuilderController extends Controller{
        $request->validate([
            'name' => 'required|max:255|min:2',
            'description' => 'required',
-           'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           //'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
        ]);
 
        $page = PageModel::find($request->id);

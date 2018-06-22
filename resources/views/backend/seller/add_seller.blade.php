@@ -13,7 +13,7 @@
         </div>
         <form action="{{route('storeVendor')}}" method="post">
           @csrf
-          {{--<input type="hidden" name="admin_id" value="{{Auth::guard('admin')->user()->id}}">--}}
+          <input type="hidden" name="admin_id" value="{{Auth::guard('admin')->user()->id}}">
         <div class="card">
           <div class="card-header">
             <strong>General Information</strong>
@@ -86,7 +86,7 @@
                       </div>
                       <div class="col-md-6 form-group">
                         <label for="email" class=" form-control-label">Email</label>
-                        <input type="email" id="email" name="email"  class="form-control" placeholder="Enter Your Dashboard Login Email">
+                        <input type="email" id="email" name="email"  class="form-control" placeholder="Enter email address">
                         @if ($errors->has('email'))
                             <div class="error">{{ $errors->first('email') }}</div>
                         @endif
@@ -159,13 +159,13 @@
                                     <div class="error">{{ $errors->first('contactphone') }}</div>
                                 @endif
                             </div>
-                              <div class="form-group">
-                                  <label for="contactemail" class=" form-control-label">Email</label>
-                                  <input type="text" id="contactemail" name="contactemail"  class="form-control" placeholder="Enter Contact Email">
-                                  @if ($errors->has('contactemail'))
-                                      <div class="error">{{ $errors->first('contactemail') }}</div>
-                                  @endif
-                              </div>
+                            <div class="form-group">
+                                <label for="contactemail" class=" form-control-label">Email</label>
+                                <input type="text" id="contactemail" name="contactemail"  class="form-control" placeholder="Enter Contact Email">
+                                @if ($errors->has('contactemail'))
+                                    <div class="error">{{ $errors->first('contactemail') }}</div>
+                                @endif
+                            </div>
                           </div>
                     </div>
 

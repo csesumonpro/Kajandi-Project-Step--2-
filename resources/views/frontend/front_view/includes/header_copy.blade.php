@@ -31,22 +31,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="navbar-before-sign">Everything You Need is theBox</p>
+                    <p class="navbar-before-sign">Everything You Need is Kajandi</p>
                 </div>
                 <div class="col-md-6">
                     <ul class="nav navbar-nav navbar-right navbar-right-no-mar">
-                        <li><a href="#">About Us</a>
+                        <li><a href="{{route('about-us')}}">About Us</a>
                         </li>
-                        <li><a href="#">Blog</a>
+                        <li><a href="{{route('blog')}}">Blog</a>
                         </li>
-                        <li><a href="#">Contact Us</a>
+                        <li><a href="{{route('show-contact-form')}}">Contact Us</a>
                         </li>
-                        <li><a href="#">FAQ</a>
+                        <li><a href="{{route('faq')}}">FAQ</a>
                         </li>
                         <li><a href="{{route('wishlist')}}">Wishlist</a>
                         </li>
-                        <li><a href="#">Help</a>
-                        </li>
+                        {{--<li><a href="#">Help</a>--}}
+                        {{--</li>--}}
                     </ul>
                 </div>
             </div>
@@ -278,11 +278,55 @@
                         </li>
                     @endif
 
-                    <li class="dropdown"><a href="mycart.html"><span ></span><i class="fa fa-shopping-cart"></i></a>
-                        <ul class='dropdown-menu dropdown-menu-shipping-cart'>
-                            <div class='text-center'><i class='fa fa-cart-arrow-down fa-4x'></i>
-                                <p class='lead' style='font-size: 16px'>You haven't Fill Your Shopping Cart Yet</p><a class='btn btn-primary btn-lg' href='#'>Start Shopping <i class='fa fa-long-arrow-right'></i></a>
-                            </div></ul>                        </li>
+                        <li class="dropdown">
+                            <a class="fa fa-shopping-cart"  href="{{route('cart')}}">
+                                @if(Cart::count('default')!=NULL)
+                                    ({{Cart::count()}})
+                                @endif
+                            </a>
+                            <ul class='dropdown-menu dropdown-menu-shipping-cart'>
+                                @if(Cart::count()==NULL)
+                                    <div class='text-center'><i class='fa fa-cart-arrow-down fa-4x'></i>
+                                        <p class='lead' style='font-size: 16px'>You haven't Fill Your Shopping Cart Yet</p><a class='btn btn-primary btn-lg' href='{{route('shop')}}'>Start Shopping <i class='fa fa-long-arrow-right'></i></a>
+                                    </div>
+                                @else
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>QTY</th>
+                                            <th>Unit Price</th>
+                                            <th>Total Price</th>
+                                        </tr>
+                                        @foreach(Cart::Content() as $item)
+                                            <tr>
+                                                <td>{{$item->name}}</td>
+                                                <td>{{$item->qty}} <a href="{{url('/remove-cart-item/'.$item->rowId)}}">X</a></td>
+                                                <td>${{$item->price}}</td>
+                                                <td>${{$item->qty*$item->price}}</td>
+                                            </tr>
+                                        @endforeach
+                                        <tr>
+                                            <th colspan="3"><span class="pull-right">Sub Total</span></th>
+                                            <th>${{Cart::subtotal()}}</th>
+                                        </tr>
+                                        {{--<tr>--}}
+                                        {{--<th colspan="3"><span class="pull-right">VAT 0%</span></th>--}}
+                                        {{--<th>$0.00</th>--}}
+                                        {{--</tr>--}}
+                                        <tr>
+                                            <th colspan="3"><span class="pull-right">Total</span></th>
+                                            <th>${{Cart::total()}}</th>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="{{route('shop')}}" class="btn btn-primary">Continue Shopping</a></td>
+                                            <td colspan="3"><a href="{{route('checkout')}}" class="pull-right btn btn-success">Checkout</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                @endif
+                            </ul>
+                        </li>
                 </ul>
             </div>
         </div>

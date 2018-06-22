@@ -36,22 +36,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="navbar-before-sign">Everything You Need is theBox</p>
+                    <p class="navbar-before-sign">Everything You Need is Kajandi</p>
                 </div>
                 <div class="col-md-6">
                     <ul class="nav navbar-nav navbar-right navbar-right-no-mar">
-                        <li><a href="#">About Us</a>
+                        <li><a href="{{route('about-us')}}">About Us</a>
                         </li>
-                        <li><a href="#">Blog</a>
+                        <li><a href="{{route('blog')}}">Blog</a>
                         </li>
-                        <li><a href="#">Contact Us</a>
+                        <li><a href="{{route('show-contact-form')}}">Contact Us</a>
                         </li>
-                        <li><a href="#">FAQ</a>
+                        <li><a href="{{route('faq')}}">FAQ</a>
                         </li>
-                        <li><a href="#">Wishlist</a>
+                        <li><a href="{{route('wishlist')}}">Wishlist</a>
                         </li>
-                        <li><a href="#">Help</a>
-                        </li>
+                        {{--<li><a href="#">Help</a>--}}
+                        {{--</li>--}}
                     </ul>
                 </div>
             </div>

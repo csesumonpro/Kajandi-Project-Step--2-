@@ -25,7 +25,7 @@ class MyAccountController extends Controller{
       if ($user->user_type=='1'){
           return view('frontend.myaccount.buyer.buyer');
       }elseif ($user->user_type=='2'){
-          return view('seller.dashboard');
+          return view('frontend.myaccount.seller.seller');
       }elseif ($user->user_type=='3'){
           return view('frontend.myaccount.buyer_seller');
       }

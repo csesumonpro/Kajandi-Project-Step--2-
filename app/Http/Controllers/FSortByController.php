@@ -13,11 +13,7 @@ class FSortByController extends Controller{
         return view('frontend.product.product_single')->with(compact('product_by_id'));
     }
     public function shop_content(){
-        $all_products = DB::table('products')
-            ->join('seller_products', 'products.seller_product_id', '=', 'seller_products.id')
-            ->select('products.*', 'seller_products.*')
-            ->paginate(12);
-//        $all_products = Product::orderBy('id','desc')->paginate(12);
+        $all_products = Product::orderBy('id','desc')->paginate(12);
         return view('frontend.product.shop')
             ->with(compact('all_products'));
     }

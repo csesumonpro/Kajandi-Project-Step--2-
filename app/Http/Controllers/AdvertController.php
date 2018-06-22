@@ -68,7 +68,7 @@ class AdvertController extends Controller
       $all_advert = HomeAdvert::
                     join('sellers','sellers.id','=','seller_id')
                   ->join('seller_products','seller_products.id','product_id')
-                  ->select('home_adverts.id as hid','home_adverts.ads_image','home_adverts.price','sellers.vendorname','seller_products.name','seller_products.image')
+                  ->select('home_adverts.id as hid','home_adverts.ads_image','home_adverts.price','sellers.vendorname','seller_products.pro_name','seller_products.pro_image')
                   ->get();
       return view('backend.seller.advert_featured.advert_list',compact('all_advert'));
     }
@@ -80,7 +80,7 @@ class AdvertController extends Controller
                 ->join('seller_products','seller_products.id','product_id')
                 ->select('home_adverts.id as hid','home_adverts.ads_image',
                          'home_adverts.price','sellers.vendorname',
-                         'seller_products.name','home_adverts.ads_section',
+                         'seller_products.pro_name','home_adverts.ads_section',
                          'home_adverts.seller_id','home_adverts.product_id',
                          'home_adverts.ads_title','home_adverts.ads_description',
                          'home_adverts.banner_color',

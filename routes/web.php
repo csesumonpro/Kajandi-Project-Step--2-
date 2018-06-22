@@ -73,6 +73,13 @@ Route::get('customer-login', function(){
 })->name('custLog');
 Route::get('show-contact-form','CustomUserController@show_contact_form')->name('show-contact-form');
 Route::post('save-contact-form','CustomUserController@save_contact_form')->name('save-contact-form');
+Route::get('/page-view/{id}','CustomUserController@page_view')->name('page-view');
+Route::get('/about-us','CustomUserController@about_us')->name('about-us');
+Route::get('/faq','CustomUserController@faq')->name('faq');
+Route::get('/blog','CustomUserController@blog')->name('blog');
+Route::get('/blog-single/{id}','CustomUserController@blog_single')->name('blog-single');
+Route::get('/post-by-cat/{id}','CustomUserController@post_by_cat')->name('post-by-cat');
+Route::get('/blog-search','CustomUserController@blog_search')->name('blog-search');
 
 
 //CustomUserController route end
@@ -119,6 +126,7 @@ Route::get('/view-contact-message/{id}','FooterController@view_contact_messsage'
 Route::get('/replay-contact-message/{id}','FooterController@replay_contact_messsage')->name('replay-contact-message');
 Route::get('/delete-contact-message/{id}','FooterController@delete_contact_message')->name('delete-contact-message');
 Route::post('/replay-contact-message','FooterController@replay_contact_message')->name('replay-contact-message');
+
 //Footer Route End
 
 //Customer Q&A Route Start
@@ -133,7 +141,7 @@ Route::get('/answer-a-question','CustomerQAController@answer_a_question')->name(
 
 //==========================BackEnd Start ==========================//
 // Admin Panel Route
-Route::GET('admin/home','AdminController@index');
+Route::GET('admin/home','AdminController@index')->name('admin-home');
 Route::GET('admin/editor','EditorController@index');
 Route::GET('admin/test','EditorController@test');
 Route::GET('admin','Admin\LoginController@showLoginForm')->name('admin.login');
@@ -212,7 +220,11 @@ Route::get('/delete-vendor/{id}', 'AdminAddSellerController@deleteVendor')->name
 Route::get('/block-vendor/{id}', 'AdminAddSellerController@blockVendor')->name('blockVendor');
 Route::get('/unblock-vendor/{id}', 'AdminAddSellerController@unblockVendor')->name('unblockVendor');
 //Vendor Route End
-
+//Vendor Product Approval
+Route::get('/approved-seller-pro', 'AdminVendorProductController@approvedSellerPro')->name('approvedSellerPro');
+Route::get('/pending-vendor-pro', 'AdminVendorProductController@pendingVendorPro')->name('pendingVendorPro');
+Route::get('/approve-vendor-pro/{id}', 'AdminVendorProductController@approveVendorPro')->name('approveVendorPro');
+//Vendor Product Approval End
 //Home featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
 Route::post('/select-pro', ['as'=>'select-pro','uses'=>'AdvertController@selectPro']);
@@ -230,26 +242,6 @@ Route::get('/delete-qa/{id}','AdminQAController@delete_qa')->name('delete-qa');
 Route::get('/view-qa/{id}','AdminQAController@view_qa')->name('view-qa');
 Route::get('/delete-answer/{id}/{question_id}','AdminQAController@delete_answer')->name('delete-answer');
 //Amin Qa Route End
-
-
-//==========================BackEnd End ==========================//
-//==========================Vendor Start ==========================//
-Route::get('/vendors', function(){
-    return view('seller.seller_master');
-});
-Route::get('/add-vpro',function(){
-    return view('seller.product.add_product');
-});
-Route::get('/seller/add-product', 'SellerProductController@index')->name('addSellerPro');
-Route::post('/seller/post-product', 'SellerProductController@postSellerProduct')->name('postSellerProduct');
-Route::get('/seller/product-list', 'SellerProductController@productList')->name('productList');
-Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->name('editProduct');
-Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteProduct');
-//test
-Route::get('/seller/json', 'SellerProductController@json')->middleware('ajax');
-// Route for list of users with specific status in json format
-Route::get('/seller/json/{pro_status}', 'SellerProductController@json')->middleware('ajax');
-
 //Page Builder Route start
 Route::get('/add-new-page','PageBuilderController@add_new_page')->name('add-new-page');
 Route::get('/page-list','PageBuilderController@page_list')->name('page-list');
@@ -258,3 +250,36 @@ Route::get('/delete-page/{id}','PageBuilderController@delete_page')->name('delet
 Route::post('/update-page','PageBuilderController@update_page')->name('update-page');
 Route::get('/edit-page/{id}','PageBuilderController@edit_page')->name('edit-page');
 //Page Builder Route End
+
+//Blog Route Start
+Route::get('add-category','BlogCategoryController@add_category')->name('add-blog-category');
+Route::post('save-category','BlogCategoryController@save_category')->name('save-blog-category');
+Route::get('category-list','BlogCategoryController@category_list')->name('blog-category-list');
+Route::get('delete-category/{id}','BlogCategoryController@category_delete')->name('delete-blog-category');
+Route::get('edit-category/{id}','BlogCategoryController@category_edit')->name('edit-blog-category');
+Route::post('update-category','BlogCategoryController@category_update')->name('update-blog-category');
+
+Route::get('add-blog','BlogCategoryController@add_blog')->name('add-blog');
+Route::post('save-blog','BlogCategoryController@save_blog')->name('save-blog');
+Route::get('blog-list','BlogCategoryController@blog_list')->name('blog-list');
+Route::get('delete-blog/{id}','BlogCategoryController@blog_delete')->name('delete-blog');
+Route::get('edit-blog/{id}','BlogCategoryController@blog_edit')->name('edit-blog');
+Route::post('update-blog','BlogCategoryController@blog_update')->name('update-blog');
+
+
+//Blog Route End
+
+//==========================BackEnd End ==========================//
+//==========================Vendor Start ==========================//
+Route::get('/seller/add-product', 'SellerProductController@index')->name('addSellerPro');
+Route::post('/seller/post-product', 'SellerProductController@postSellerProduct')->name('postSellerProduct');
+Route::get('/seller/product-list', 'SellerProductController@productList')->name('productList');
+Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->name('editProduct');
+Route::post('/seller/update-product/{id}', 'SellerProductController@updateSellerPro')->name('updateSellerPro');
+Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteSellerPro');
+
+//test
+Route::get('/seller/destroy/', 'SellerProductController@deleteMultiPro')->name('deleteMultiPro');
+Route::get('/seller/json', 'SellerProductController@json')->middleware('ajax');
+// Route for list of users with specific status in json format
+Route::get('/seller/json/{pro_status}', 'SellerProductController@json')->middleware('ajax');

@@ -58,11 +58,13 @@ class FooterController extends Controller{
         if ($social!=NULL) {
             $social->android = $request->android;
             $social->iphone = $request->iphone;
+            $social->trade_manager = $request->trade_manager;
             $social->save();
         }else{
             $social = new AndroidIphone();
             $social->android = $request->android;
             $social->iphone = $request->iphone;
+            $social->trade_manager = $request->trade_manager;
             $social->save();
         }
         return redirect('apps-download-option')->with('message_success','Apps Download Link Added Successfully.....');

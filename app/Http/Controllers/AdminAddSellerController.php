@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Seller;
 use DB;
-use App\User;
-use Session;
+
 class AdminAddSellerController extends Controller
 {
   public function __construct()
@@ -29,7 +28,7 @@ class AdminAddSellerController extends Controller
        'producttype' => 'required|max:255|min:1',
        'location' => 'required|max:255|min:1',
        'country' => 'required|max:255|min:1',
-       'email' => 'required|string|email|max:100|unique:sellers|unique:users',
+       'email' => 'required|string|email|max:100|unique:sellers',
        'address' => 'required|max:500|min:7',
        'url' => 'required|max:255|min:2',
        'cac' => 'required|max:255|min:2',
@@ -45,16 +44,8 @@ class AdminAddSellerController extends Controller
        'password' => 'required|string|min:6|confirmed|max:19',
    ]);
 
-    $user = new User();
-    $user->name =  $request->vendorname;
-    $user->email =  $request->email;
-    $user->password = bcrypt($request->password);
-    $user->user_type = '2';
-    $user->save();
-    $user_id = $user->id;
-    Session::put('user_id',$user_id);
     $sv = new Seller();
-    $sv->admin_id = Session::get('user_id');
+    $sv->admin_id = $request->admin_id;
     $sv->vendorname = $request->vendorname;
     $sv->vendor_type = $request->vendor_type;
     $sv->producttype = $request->producttype;
@@ -116,6 +107,7 @@ class AdminAddSellerController extends Controller
    ]);
 
    $sv = Seller::find($id);
+   $sv->admin_id = $request->admin_id;
    $sv->vendorname = $request->vendorname;
    $sv->vendor_type = $request->vendor_type;
    $sv->producttype = $request->producttype;
@@ -144,8 +136,6 @@ class AdminAddSellerController extends Controller
   {
     $sv = Seller::find($id);
     $sv->delete();
-    $user = User::where('id',$sv->admin_id)->first();
-    $user->delete();
     return back()->with('message_success', 'Vendor Deleted Succesfully');
   }
 

@@ -92,6 +92,15 @@ class ProductController extends Controller {
         $product->save();
         $product_id =  $product->id;
         Session::put('product_id',$product_id);
+//        $acceories = $request->accessories_id;
+//        if($acceories!=NULL) {
+//            for ($idx = 0; $idx < count($acceories); $idx++) {
+//                $acc = new Accessories();
+//                $acc->accessories_id = $request['accessories_id'][$idx];
+//                $acc->product_id = Session::get('product_id');
+//                $acc->save();
+//            }
+//        }
         return redirect('/add-product')->with('message_success','product Added Successfully');
     }
     public function product_list(){
