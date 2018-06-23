@@ -6,6 +6,7 @@ use App\AndroidIphone;
 use App\ContactForm;
 use App\Social;
 use Illuminate\Http\Request;
+use Mail;
 
 class FooterController extends Controller{
     public function __construct()
@@ -90,6 +91,17 @@ class FooterController extends Controller{
         return view('backend.footer.contact.replay_contact_message',compact('message_by_id'));
     }
     public function replay_contact_message(Request $request){
-        return $request->all();
+      $data =[
+          'email'=>$request->email,
+          'content'=>$request->message,
+          'subject'=>$request->subject
+      ];
+
+      Mail::send('backend.footer.contact.contact_email_message',$data,function ($variable) use ($data){
+            $variable->to($data['email']);
+            $variable->subject($data['subject']);
+            $variable->from('r25n.office@gmail.com');
+      });
+        return back()->with('message_success', 'Email Sent Succesfully........');
     }
 }
