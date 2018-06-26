@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label>Message</label>
-                    <textarea class="form-control" name="message"></textarea>
+                    <textarea class="form-control" name="message" name="" id="" cols="30" rows="10"></textarea>
                     @if ($errors->has('message'))
                         <div class="error">{{ $errors->first('message') }}</div>
                     @endif

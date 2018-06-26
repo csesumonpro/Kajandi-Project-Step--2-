@@ -49,11 +49,13 @@ class LoginController extends Controller
         foreach ($this->guard()->user()->role as $role) {
             if ($role->name == 'admin') {
                 return redirect('admin/home');
-            }elseif ($role->name == 'editor') {
+            } elseif ($role->name == 'editor') {
                 return redirect('admin/editor');
             }
         }
+
     }
+
 
 
     /**

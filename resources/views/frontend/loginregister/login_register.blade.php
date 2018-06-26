@@ -86,8 +86,8 @@
                             @endif
                             <select class="form-control" name="user_type">
                                 <option value="1">Buyer</option>
-                                <option value="2">Supplier</option>
-                                <option value="3">Both</option>
+                                {{--<option value="2">Supplier</option>--}}
+                                {{--<option value="3">Both</option>--}}
                             </select>
                         </div>
                         <div class="form-group">

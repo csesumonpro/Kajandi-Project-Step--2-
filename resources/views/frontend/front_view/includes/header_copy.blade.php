@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="{{asset('public/frontend/css/star-rating.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/table-responsive01.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/table-responsive02.css')}}">
-    <link rel="stylesheet" href="{{asset('public/frontend/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/mystyles.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/css/styles.css')}}">
 
 </head>
 
@@ -136,8 +136,8 @@
 
           <select class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="user_type">
             <option value="1">Buyer</option>
-            <option value="2">Supplier</option>
-            <option value="3">Both</option>
+            {{--<option value="2">Supplier</option>--}}
+            {{--<option value="3">Both</option>--}}
           </select>
           @if ($errors->has('phone'))
               <span class="invalid-feedback">
@@ -217,12 +217,12 @@
                     </select>
                     <div class="form-group">
                         {{--id="searchbox"--}}
-                        <input class="form-control searchbox"  name="keyword" type="text" placeholder="Search the Entire Store..." />
+                        <input class="form-control header_copy_searchbox" name="keyword" type="text" placeholder="Search the Entire Store..." />
                     </div>
                     <button type="submit" class="fa fa-search navbar-main-search-submit" href="#" style="z-index: 4"></button>
                 </form>
                 <a class="navbar-theme-img" href="#">
-                    <img src="{{asset('public/frontend/img/')}}/ecommerce_banner.png" alt="Image Alternative text" style="width: 80px" title="Image Title" />
+                    {{--<img src="{{asset('public/frontend/img/')}}/ecommerce_banner.png" alt="Image Alternative text" style="width: 80px" title="Image Title" />--}}
                 </a>
             </div>
         </div>

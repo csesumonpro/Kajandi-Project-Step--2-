@@ -2,10 +2,14 @@
 
 
 //==========================Front Start ==========================//
+
+
 Route::get('/', function () {
     return view('frontend.front_view.main_page.index');
 });
-
+Route::get('/error-page', function () {
+    return view('frontend.page.404');
+});
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -21,6 +25,7 @@ Route::post('/send-single-mail', 'AdminSubscriberController@sendSingleMail')->na
 
 //Product sortBy Route start
 Route::get('/shop','FSortByController@shop_content')->name('shop');
+Route::get('/error-page','FSortByController@error_page')->name('error-page');
 Route::get('/product-category/{id}','FSortByController@product_by_category')->name('product-category');
 Route::get('/product-sub-category/{id}','FSortByController@product_by_sub_category')->name('product-sub-category');
 Route::get('/product-manufacturer/{id}','FSortByController@product_by_manufacturer')->name('product-manufacturer');
@@ -275,8 +280,14 @@ Route::get('delete-blog/{id}','BlogCategoryController@blog_delete')->name('delet
 Route::get('edit-blog/{id}','BlogCategoryController@blog_edit')->name('edit-blog');
 Route::post('update-blog','BlogCategoryController@blog_update')->name('update-blog');
 
-
 //Blog Route End
+
+//Admin User Manage Start
+Route::get('add-user','AdminController@add_user')->name('add-user');
+Route::get('user-list','AdminController@user_list')->name('user-list');
+Route::post('save-user','AdminController@save_user')->name('save-user');
+
+//Admin User Manage End
 
 //==========================BackEnd End ==========================//
 //==========================Vendor Start ==========================//

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Blog;
 use App\ContactForm;
+use App\Mail\SubscribersMail;
 use App\PageModel;
 use Illuminate\Http\Request;
 use App\User;
