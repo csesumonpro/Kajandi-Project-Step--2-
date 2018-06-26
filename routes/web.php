@@ -13,6 +13,10 @@ Route::get('/error-page', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Faq route
+Route::get('/faq', 'GuestController@askQuestion')->name('faq');
+Route::post('/faq-question', 'FAQController@postQuestion')->name('postQuestion');
+//End Faw route
 //Subscriber route
 Route::post('/subscribe-email', 'EmailSubscriberController@saveEmail')->name('saveEmail');
 Route::get('/subscribed-list', 'AdminSubscriberController@subsList')->name('subsList');
@@ -89,7 +93,6 @@ Route::get('show-contact-form','CustomUserController@show_contact_form')->name('
 Route::post('save-contact-form','CustomUserController@save_contact_form')->name('save-contact-form');
 Route::get('/page-view/{id}','CustomUserController@page_view')->name('page-view');
 Route::get('/about-us','CustomUserController@about_us')->name('about-us');
-Route::get('/faq','CustomUserController@faq')->name('faq');
 Route::get('/blog','CustomUserController@blog')->name('blog');
 Route::get('/blog-single/{id}','CustomUserController@blog_single')->name('blog-single');
 Route::get('/post-by-cat/{id}','CustomUserController@post_by_cat')->name('post-by-cat');
@@ -148,7 +151,15 @@ Route::get('/ask-a-question','CustomerQAController@ask_a_question')->name('ask-a
 Route::get('/answer-a-question','CustomerQAController@answer_a_question')->name('answer-a-question');
 //Customer Q&A Route End
 
-
+//FAQ route
+Route::get('/pending-faq-list', 'AdminFAQController@pendingFaqList')->name('pendingFaqList');
+Route::get('/answer-faq/{id}', 'AdminFAQController@answerFaq')->name('answerFaq');
+Route::post('/answer-faq-post', 'AdminFAQController@postFaqAnswer')->name('postFaqAnswer');
+Route::get('/faq-delete/{id}', 'AdminFAQController@faqPendingDelete')->name('faqPendingDelete');
+Route::get('/faq-answered-list', 'AdminFAQController@faqAnsweredList')->name('faqAnsweredList');
+Route::get('/faq-answer-edit/{id}', 'AdminFAQController@faqAnsEdit')->name('faqAnsEdit');
+Route::post('/faq-answer-update/{id}','AdminFAQController@faqAnsUpdate')->name('faqAnsUpdate');
+//END FAQ route
 
 
 

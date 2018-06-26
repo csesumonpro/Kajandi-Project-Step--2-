@@ -52,8 +52,7 @@ class CustomUserController extends Controller{
         return view('frontend.page.about_us');
     }
     public function faq(){
-        return ('faq Comming');
-//        return view('frontend.page.faq');
+        return view('frontend.faq.faq_list');
     }
     public function blog(){
         $blog_post = Blog::orderBy('id','desc')->paginate(6);

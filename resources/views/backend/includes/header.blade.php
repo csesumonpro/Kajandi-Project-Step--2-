@@ -160,7 +160,14 @@
 
                     </ul>
                 </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>FAQ</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('pendingFaqList')}}">Pending Ask list </a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('faqAnsweredList')}}">Answered FAQ list</a></li>
 
+                    </ul>
+                </li>
                 <h3 class="menu-title">Footer Part</h3><!-- /.menu-title -->
 
                 <li class="menu-item-has-children dropdown">
