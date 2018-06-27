@@ -140,7 +140,7 @@
 
                 <select class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="user_type">
                     <option value="1">Buyer</option>
-                    {{--<option value="2">Supplier</option>--}}
+                    <option value="2">Supplier</option>
                     {{--<option value="3">Both</option>--}}
                 </select>
                 @if ($errors->has('phone'))
@@ -171,7 +171,7 @@
             </p>
             <div class="checkbox">
                 <label>
-                    <input class="i-check" name="" type="checkbox" />Subscribe to the Newsletter</label>
+                    <input class="i-check" name="newsletter" type="checkbox" />Subscribe to the Newsletter</label>
             </div>
             <input class="btn btn-primary" type="submit" value="Create Account" />
 
