@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccessoriesTable extends Migration
+class CreateUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateAccessoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('accessories', function (Blueprint $table) {
+        Schema::create('units', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->nullable();
-            $table->boolean('accessories_id')->nullable()->comment('1 for ser 0 for unset');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateAccessoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accessories');
+        Schema::dropIfExists('units');
     }
 }
