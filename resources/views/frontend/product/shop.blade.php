@@ -13,10 +13,10 @@
             </ol>
             <ul class="category-selections clearfix">
                 <li>
-                    <a class="fa fa-th-large category-selections-icon active" href="#"></a>
+                    <a class="fa fa-th-large category-selections-icon active" href="#" id="grid_view"></a>
                 </li>
                 <li>
-                    <a class="fa fa-th-list category-selections-icon" href="#"></a>
+                    <a class="fa fa-th-list category-selections-icon" href="#" id="list_view"></a>
                 </li>
                 <li><span class="category-selections-sign">Sort by :</span>
                     <select class="category-selections-select">
@@ -40,6 +40,7 @@
                 </li>
             </ul>
         </header>
+
 
         <div class="row">
             <div class="col-md-3">
@@ -278,268 +279,117 @@
             </div>
             <div class="col-md-9">
 
+                <!-- Updated -->
                 <div class="row" id="data" data-gutter="15">
                     <div class="vendor-product">
                         <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" id="data" data-gutter="10" >
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
+                            @foreach($all_products as $product)
+                            <!-- Single Product -->
+                            <div class="col-md-12 change_grid">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="row" id="data" data-gutter="10" >
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="pro-image">
+                                                    <a href="{{route('product-single',$product->id)}}"><img  width="100" height="150" src="{{asset($product->pro_image)}}"></a>
+                                                    <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
+                                                </div>
 
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="pro-image">
+                                                    <a href="{{route('product-single',$product->id)}}"><img src="{{asset($product->a_img_1)}}"></a>
+                                                    <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="pro-image">
+                                                    <a href="{{route('product-single',$product->id)}}"><img src="{{asset($product->a_img_2)}}"></a>
+                                                    <a href="{{route('product-single',$product->id)}}">{{$product->pro_name}}</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="row" id="data" data-gutter="10">
+                                            <div class="pro-info">
+                                                <p class="name"><span class="tag">My Product</span>
+                                                    <?php $seller = DB::table('sellers')->where('admin_id',$product->seller_id)->first();?>
+                                                    {{$seller->vendorname}}
+                                                </p>
+                                                <p class="location"><span class="tag">Location</span>Vendor Location 1, Vendor Location 2, Vendor Location 3 </p>
+                                                <p class="type"><span class="tag">Vendor type</span>
+                                                    @if($product->supply_type=='1')
+                                                        OEM
+                                                        @elseif($product->supply_type=='2')
+                                                        DISTRIBUTOR
+                                                    @elseif($product->supply_type='3')
+                                                        WHOLESELLER
+                                                    @elseif($product->supply_type='4')
+                                                        RETAILER
+                                                    @endif
+
+                                                </p>
+                                            </div>
+
                                         </div>
 
-                                    </div>
+                                        <div class="row" data-gutter="10">
+                                            <div class="col-md-4 col-sm-4">
+                                                <ul class="product-caption-rating">
+                                                    <li class="rated"><i class="fa fa-star"></i>
+                                                    </li>
+                                                    <li class="rated"><i class="fa fa-star"></i>
+                                                    </li>
+                                                    <li class="rated"><i class="fa fa-star"></i>
+                                                    </li>
+                                                    <li class="rated"><i class="fa fa-star"></i>
+                                                    </li>
+                                                    <li><i class="fa fa-star"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8">
+                                                <button class="btn btn-primary" href="#">Contact supplier</button>
+                                            </div>
 
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
                                         </div>
-
+                                        <div class="row" data-gutter="10">
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="details-option">
+                                                    <a href="#"><i class="fa fa-star"></i> Favourite</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8">
+                                                <div class="details-option">
+                                                    <a href="#"><i class="fa fa-plus"></i> Compare</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
-
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" id="data" data-gutter="10">
-                                    <div class="pro-info">
-                                        <p class="name"><span class="tag">My Product</span>Vendor Name</p>
-                                        <p class="location"><span class="tag">Location</span>Vendor Location 1, Vendor Location 2, Vendor Location 3 </p>
-                                        <p class="type"><span class="tag">Vendor type</span>Vendor Type is here</p>
-                                    </div>
-
-                                </div>
-
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <ul class="product-caption-rating">
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <button class="btn btn-primary" href="#">Contact supplier</button>
-                                    </div>
-
-                                </div>
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-star"></i> Favourite</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-plus"></i> Compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- /Single Product -->
+                            @endforeach
                         </div>
 
                     </div>
 
                 </div>
-                <div class="row" data-gutter="15">
-                    <div class="vendor-product">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" data-gutter="10" >
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product title is here</a>
-                                        </div>
+                <!-- /Updated -->
 
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" data-gutter="10">
-                                    <div class="pro-info">
-                                        <p class="name"><span class="tag">My Product</span>Vendor Name</p>
-                                        <p class="location"><span class="tag">Location</span>Vendor Location 1, Vendor Location 2, Vendor Location 3 </p>
-                                        <p class="type"><span class="tag">Vendor type</span>Vendor Type is here</p>
-                                    </div>
-
-                                </div>
-
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <ul class="product-caption-rating">
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <button class="btn btn-primary" href="#">Contact supplier</button>
-                                    </div>
-
-                                </div>
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-star"></i> Favourite</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-plus"></i> Compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="row" data-gutter="15">
-                    <div class="vendor-product">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" data-gutter="10" >
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product title is here</a>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="pro-image">
-                                            <a href="#"><img src="img/products/1499633746.jpg"></a>
-                                            <a href="#">Product tile is here</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6 col-sm-6">
-                                <div class="row" data-gutter="10">
-                                    <div class="pro-info">
-                                        <p class="name"><span class="tag">My Product</span>Vendor Name</p>
-                                        <p class="location"><span class="tag">Location</span>Vendor Location 1, Vendor Location 2, Vendor Location 3 </p>
-                                        <p class="type"><span class="tag">Vendor type</span>Vendor Type is here</p>
-                                    </div>
-
-                                </div>
-
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <ul class="product-caption-rating">
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li class="rated"><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <button class="btn btn-primary" href="#">Contact supplier</button>
-                                    </div>
-
-                                </div>
-                                <div class="row" data-gutter="10">
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-star"></i> Favourite</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-sm-8">
-                                        <div class="details-option">
-                                            <a href="#"><i class="fa fa-plus"></i> Compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
                 <div class="row" id="row" data-gutter="10">
                     <div class="vendor-pagination">
 
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        {{--{{ $all_products->count()}}--}}
+                        {{--@if(function_exists('links'))--}}
+                            <span class="text-center"> {{ $all_products->links() }}</span>
+                        {{--@endif--}}
                     </div>
                 </div>
 
@@ -548,4 +398,5 @@
 
         </div>
     </div>
-    @endsection
+
+@endsection

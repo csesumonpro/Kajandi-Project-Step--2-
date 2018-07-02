@@ -6,7 +6,7 @@
         <h1 class="page-title">
             @foreach($all_category as $category)
                 @if($category->id == $product_by_id->cat_id)
-                {{$product_by_id->name}}
+                {{$product_by_id->pro_name}}
                 @endif
             @endforeach
         </h1>
@@ -45,8 +45,8 @@
                     {{--<a href="{{asset('public/frontend/img/')}}/products/1499633334.jpg" id="jqzoom" data-rel="gal-1">--}}
                         {{--<img src="{{asset('public/frontend/img/')}}/products/1499633334.jpg" alt="Image Alternative text" title="Image Title" />--}}
                     {{--</a>--}}
-                    <a href="{{asset($product_by_id->image)}}" id="jqzoom" data-rel="gal-1">
-                        <img src="{{asset($product_by_id->image)}}" alt="Image Alternative text" title="Image Title" />
+                    <a href="{{asset($product_by_id->pro_image)}}" id="jqzoom" data-rel="gal-1">
+                        <img src="{{asset($product_by_id->pro_image)}}" alt="Image Alternative text" title="Image Title" />
                     </a>
                 </div>
             </div>

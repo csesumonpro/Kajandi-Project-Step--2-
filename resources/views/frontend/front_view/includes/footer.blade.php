@@ -9,14 +9,14 @@
             <div class="col-md-6 col-sm-6">
                 <div class="app-txt">
                     <span class="donload-text">Download:</span>
-                    <span class="app-image"><a href="{{$download_link->iphone}}" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/app-store.png" alt="apple store"></a></span>
-                    <span class="app-image"><a href="{{$download_link->android}}" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/play-store.png" alt="apple store"></a></span>
+                    <span class="app-image"><a href="@if($download_link !=Null){{$download_link->iphone}} @endif" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/app-store.png" alt="apple store"></a></span>
+                    <span class="app-image"><a href="@if($download_link !=Null){{$download_link->android}} @endif" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/play-store.png" alt="apple store"></a></span>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="app-txt">
                     <span class="donload-text">Download TradeManager:</span>
-                    <span class="app-image"><a href="{{$download_link->trade_manager}}" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/trend.png" alt="apple store"></a></span>
+                    <span class="app-image"><a href="@if($download_link !=Null){{$download_link->trade_manager}} @endif" data-target="_blank"><img src="{{asset('public/frontend/img/')}}/trend.png" alt="apple store"></a></span>
 
                 </div>
             </div>
@@ -32,19 +32,19 @@
                         $social_link = DB::table('socials')->where('id',1)->first();
                     ?>
                     <li>
-                        <a class="fa fa-facebook" href="{{$social_link->facebook}}"></a>
+                        <a class="fa fa-facebook" href="@if($download_link !=Null){{$social_link->facebook}} @endif"></a>
                     </li>
                     <li>
-                        <a class="fa fa-twitter" href="{{$social_link->twitter}}"></a>
+                        <a class="fa fa-twitter" href="@if($download_link !=Null){{$social_link->twitter}} @endif"></a>
                     </li>
                     <li>
-                        <a class="fa fa-pinterest" href="{{$social_link->pinterest}}"></a>
+                        <a class="fa fa-pinterest" href="@if($download_link !=Null){{$social_link->pinterest}} @endif"></a>
                     </li>
                     <li>
-                        <a class="fa fa-instagram" href="{{$social_link->instagram}}"></a>
+                        <a class="fa fa-instagram" href="@if($download_link !=Null){{$social_link->instagram}} @endif"></a>
                     </li>
                     <li>
-                        <a class="fa fa-google-plus" href="{{$social_link->google_plus}}"></a>
+                        <a class="fa fa-google-plus" href="@if($download_link !=Null){{$social_link->google_plus}} @endif"></a>
                     </li>
                 </ul>
             </div>

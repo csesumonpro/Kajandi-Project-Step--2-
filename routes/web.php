@@ -223,7 +223,6 @@ Route::get('delete-unit/{id}','UnitController@unit_delete')->name('delete-unit')
 Route::get('edit-unit/{id}','UnitController@unit_edit')->name('edit-unit');
 Route::post('update-unit','UnitController@unit_update')->name('update-unit');
 //Product Unit Route End
-
 //Product  Route Start
 Route::get('add-product','ProductController@add_product')->name('add-product');
 Route::post('save-product','ProductController@save_product')->name('save-product');

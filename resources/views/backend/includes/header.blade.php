@@ -1,4 +1,3 @@
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -258,7 +257,6 @@
                                 @endif
                         <?php
                                 $all_message = DB::table('contact_forms')->orderBy('id','desc')->where('status','unread')->get()->take(5);
-
                             ?>
                            @foreach($all_message as $contact)
                                 <?php
@@ -312,7 +310,6 @@
                                         $time_message = $interval->s." seconds ago";
                                     }
                                 }
-
                                 ?>
                             <a class="dropdown-item media bg-flat-color-5" href="{{route('view-contact-message',$contact->id)}}">
                                 <span class="photo media-left"><img alt="avatar" src="{{asset('/public/backend/images/')}}/avatar/3.png"></span>

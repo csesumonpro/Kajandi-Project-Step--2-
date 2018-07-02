@@ -44,8 +44,8 @@
                     <select name="user_role" id="SelectLm" class="form-control-sm form-control" required>
                         <option value="0">Select One</option>
                             <option value="1">Admin</option>
-                            <option value="2">Moderator</option>
-                            <option value="3">Editor</option>
+                            <option value="3">Moderator</option>
+                            <option value="4">Editor</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Add</button>

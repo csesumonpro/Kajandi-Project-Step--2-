@@ -11,7 +11,7 @@
         <nav class="dash-navigation-wrap">
             <ul>
                 <li class="active"><a  href="{{route('my-account',Auth::user()->id)}}">Dashboard</a></li>
-                <li><a href="{{route('customer-orders',Auth::user()->id)}}">orders</a></li>
+                <li><a href="{{route('customer-orders', \Crypt::encrypt(Auth::user()->id))}}">orders</a></li>
                 <li><a href="{{route('customer-report',Auth::user()->id)}}">Report</a></li>
                 <li><a href="{{route('customer-accounting',Auth::user()->id)}}">Accounting</a></li>
                 <li><a href="{{route('customer-wallet',Auth::user()->id)}}">Wallet</a></li>

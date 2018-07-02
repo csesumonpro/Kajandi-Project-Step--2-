@@ -127,10 +127,7 @@ class ProductController extends Controller {
         $product_by_id = Product::where('id',$id)->first();
         return view('backend.product.edit_product_copy')->with(compact('product_by_id','all_category','all_brand','all_material','all_menu'));
     }
-    public function product_view($id){
-        $product_by_id = Product::where('id',$id)->first();
-        return view('backend.product.view_product')->with(compact('product_by_id','all_category','all_brand','all_material','all_menu'));
-    }
+
     public function product_update(Request $request){
 
         $request->validate([
@@ -241,6 +238,10 @@ class ProductController extends Controller {
         }
 
         return redirect('/edit-product/'.$product->id)->with('message_success','product Updated Successfully');
+    }
+    public function product_view($id){
+        $product_by_id = Product::where('id',$id)->first();
+        return view('backend.product.view_product')->with(compact('product_by_id','all_category','all_brand','all_material','all_menu'));
     }
 
 }
