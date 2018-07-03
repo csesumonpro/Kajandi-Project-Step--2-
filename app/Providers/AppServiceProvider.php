@@ -3,7 +3,7 @@
 namespace App\Providers;
 use App\Category;
 use App\Manufacter;
-use App\SellerProduct;
+use App\Product;
 use App\ProductModel;
 use App\Subcategory;
 use View;
@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         //Category  Start
         View::composer('*', function($View){
-            $data = SellerProduct::where('pro_status',1)->orderBy('id','desc')->paginate(12);
+            $data = Product::orderBy('id','desc')->get();
             $View->with('all_product', $data);
         });
         //Category End

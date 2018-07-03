@@ -128,7 +128,6 @@ $(".product-page-qty-minus").on('click', function() {
         $(this).next(".product-page-qty-input").val(currentVal - 1);
     }
 });
-
 //Developer Js
 // Changing Grid
 $("#grid_view").on( 'click', function() {

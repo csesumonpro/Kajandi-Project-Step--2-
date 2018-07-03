@@ -34,15 +34,13 @@ class MyAccountController extends Controller{
 
 //   Customer Account/ Buyer Account Info Start
 
-    public function customer_orders($ids){
-       $id =  \Crypt::decrypt($ids);
+    public function customer_orders($id){
         $orders = DB::table('orders')
             ->join('payments', 'orders.id', '=', 'payments.order_id')
             ->select('orders.*', 'payments.payment_status')
             ->where('cus_id','=',$id)
 //            ->orderBy('created_at','desc')
             ->get();
-
         return view('frontend.myaccount.buyer.customer_orders',compact('orders'));
     }
     public function view_each_order($id){

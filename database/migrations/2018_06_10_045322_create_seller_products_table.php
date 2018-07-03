@@ -14,7 +14,7 @@ class CreateSellerProductsTable extends Migration
         Schema::create('seller_products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('seller_id')->unsigned();
-            $table->integer('pro_status')->comment('0=>Inactive, 1=>Active, 2=>Low Stock, 3=>Out of Stock ');
+            $table->integer('pro_status')->comment('0=>Inactive, 1=>Inactive, 2=>Low Stock, 3=>Out of Stock ');
             $table->string('pro_name');
 
             $table->string('pro_description');
@@ -28,7 +28,7 @@ class CreateSellerProductsTable extends Migration
             $table->string('pro_image')->nullble();
             $table->integer('manufacture_id')->unisgned();//
 
-            $table->integer('conditions')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used');
+            $table->integer('condition')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used');
             $table->integer('pro_warranty')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');
             $table->integer('pro_gurrantee')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');
             //$table->integer('source')->comment('1=>OEM, 2=>Retailer,3=>Distributor');

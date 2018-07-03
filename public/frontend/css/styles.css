@@ -7048,10 +7048,9 @@ form .stars span {
   }
 }
 .invalid-feedback strong{color:red!important;}
-
- .change_grid.grid-view #data .col-md-4 {
-   display:  none;
- }
+.change_grid.grid-view #data .col-md-4 {
+  display:  none;
+}
 
 .change_grid.grid-view #data .col-md-4:first-child {
   display:  block;
