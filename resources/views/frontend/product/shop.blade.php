@@ -321,10 +321,16 @@
                                             <div class="row" id="data" data-gutter="10">
                                                 <div class="pro-info">
                                                     <p class="name"><span class="tag">My Product</span>
-                                                        <?php $seller = DB::table('sellers')->where('admin_id',$product->seller_id)->first();?>
-                                                        {{$seller->vendorname}}
+                                                        <?php $seller = DB::table('sellers')->where('user_id',$product->seller_id)->first();?>
+                                                        @if($seller!=NUll)
+                                                            {{$seller->vendorname}}
+                                                            @endif
                                                     </p>
-                                                    <p class="location"><span class="tag">Location</span>Vendor Location 1, Vendor Location 2, Vendor Location 3 </p>
+                                                    <p class="location"><span class="tag">Location</span>
+                                                        @if($seller!=NULL)
+                                                            {{$seller->location}}
+                                                            @endif
+                                                    </p>
                                                     <p class="type"><span class="tag">Vendor type</span>
                                                         @if($product->supply_type=='1')
                                                             OEM

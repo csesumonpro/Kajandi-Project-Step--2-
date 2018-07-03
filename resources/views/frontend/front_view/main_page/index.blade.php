@@ -263,7 +263,7 @@ $ads_s_2 = App\HomeAdvert::where('ads_section', 4)
                         <h5 class="banner-category-title">{{$category->cat_name}}</h5>
                         {{--Query for count category by product--}}
                         <?php
-                        $count = DB::table('products')->where('cat_id',$category->id)->count();
+                        $count = DB::table('seller_products')->where('pro_cat_id',$category->id)->count();
                         ?>
                         <p class="banner-category-desc">{{$count}} products</p>
 
