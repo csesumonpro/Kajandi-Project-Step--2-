@@ -283,7 +283,9 @@
                     <div class="vendor-product">
                         <div class="row">
                             @if(count($all_products)=='0')
-                   <p class="alert alert-warning"> {{$search_message}}</p>
+                                @if(isset($search_message) && $search_message!=NULL)
+                              <p class="alert alert-warning"> {{$search_message}}</p>
+                                @endif
                     @endif
                         @foreach($all_products as $product)
                             <!-- Single Product -->
@@ -350,6 +352,42 @@
                                             <div class="row" data-gutter="10">
                                                 <div class="col-md-4 col-sm-4">
                                                     <ul class="product-caption-rating">
+                                                        <?php $average_rating = DB::table('customer_reviews')
+                                                            ->where('product_id',$product->id)->get();?>
+                                                        <?php
+                                                        $avg = 0;
+                                                        foreach ($average_rating as $avgr){
+                                                            $result = $avgr->rating;
+                                                            $avg = $avg+$result;
+                                                        }?>
+                                                        <?php if($avg!=0){
+                                                        $rate_by_product = $avg/$average_rating->count();
+                                                        if($rate_by_product>0 && $rate_by_product<=1){?>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <?php    }elseif($rate_by_product>1 && $rate_by_product<=2){?>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <?php } elseif($rate_by_product>2 && $rate_by_product<=3){?>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <?php     }elseif ($rate_by_product>3 && $rate_by_product<=4){?>
+
                                                         <li class="rated"><i class="fa fa-star"></i>
                                                         </li>
                                                         <li class="rated"><i class="fa fa-star"></i>
@@ -358,8 +396,27 @@
                                                         </li>
                                                         <li class="rated"><i class="fa fa-star"></i>
                                                         </li>
-                                                        <li><i class="fa fa-star"></i>
+                                                        <li ><i class="fa fa-star"></i></li>
+                                                        <?php } elseif($rate_by_product>4 && $rate_by_product<=5){?>
+                                                        <li class="rated"><i class="fa fa-star"></i>
                                                         </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+                                                        <li class="rated"><i class="fa fa-star"></i>
+                                                        </li>
+
+                                                        <?php } }else{?>
+                                                            <i class="fa fa-star"></i></li>
+                                                            <i class="fa fa-star"></i></li>
+                                                            <i class="fa fa-star"></i></li>
+                                                            <i class="fa fa-star"></i></li>
+                                                            <i class="fa fa-star"></i></li>
+                                                          <?php   }?>
+
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-8 col-sm-8">

@@ -55,25 +55,19 @@ class AdvertController extends Controller
     public function adrvertList()
     {
         $all_advert = HomeAdvert::
-        join('sellers','sellers.id','=','seller_id')
+              join('sellers','sellers.id','=','seller_id')
             ->join('seller_products','seller_products.id','product_id')
-            ->select('home_adverts.id as hid','home_adverts.ads_image','home_adverts.price','sellers.vendorname','seller_products.pro_name','seller_products.pro_image')
+
             ->get();
         return view('backend.seller.advert_featured.advert_list',compact('all_advert'));
     }
     public function editAdvert($id)
     {
-        $editAds = HomeAdvert::find($id)
-            ->join('sellers','sellers.id','=','seller_id')
-            ->join('seller_products','seller_products.id','product_id')
-            ->select('home_adverts.id as hid','home_adverts.ads_image',
-                'home_adverts.price','sellers.vendorname',
-                'seller_products.pro_name','home_adverts.ads_section',
-                'home_adverts.seller_id','home_adverts.product_id',
-                'home_adverts.ads_title','home_adverts.ads_description',
-                'home_adverts.banner_color',
-                'home_adverts.shop_now_link')
-            ->first();
+        $editAds = HomeAdvert::
+            join('sellers','sellers.id','=','seller_id')
+            ->join('seller_products','seller_products.id','product_id')->find($id);
+
+            //->first();
         return view('backend.seller.advert_featured.edit_advert',compact('editAds'));
     }
     public function updateAdvert(Request $request, $id)
@@ -83,15 +77,22 @@ class AdvertController extends Controller
             'seller_id' => 'required',
             'product_id' => 'required',
         ]);
+
+        $svimg = HomeAdvert::find($id);
         $file = $request->file( 'ads_image' );
         if($file!=NULL) {
             $name        = time() . '_' . $file->getClientOriginalName();
             $upload_path = 'public/backend/AdvertImg/';
             $file->move( $upload_path, $name );
             $advert_image = $upload_path . $name;
-        }else{
-            $advert_image = '';
+            if ($svimg->ads_image != Null) {
+                unlink( $svimg->ads_image );
+            }
+
+        }else {
+          $advert_image = $svimg->ads_image;
         }
+
         $svs = HomeAdvert::find($id);
         $svs->admin_id = $request->input('admin_id');
         $svs->ads_section = $request->ads_section;
@@ -106,6 +107,9 @@ class AdvertController extends Controller
     public function deleteAdvert($id)
     {
         $delete = HomeAdvert::find($id);
+        if ($delete->ads_image != Null) {
+            unlink($delete->ads_image);
+        }
         $delete->delete();
         return back()->with('message_success', 'Advert Deleted Succesfully');
     }
