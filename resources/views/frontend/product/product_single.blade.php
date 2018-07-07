@@ -625,7 +625,11 @@
                                 <p class="product-page-product-rating-sign">{{$average_rating->count()}} customer reviews </p>
                             </div>
                             <div class="col-md-6 pull-right">
-                                <h6 class="pull-right">Sold by <a href="../vendors/13.html">Leister</a></h6>
+                                <?php $seller = DB::table('sellers')->where('user_id',$product_by_id->seller_id)->first();?>
+                                <h6 class="pull-right text-uppercase">Sold by <a href="{{route('seller-product',$product_by_id->seller_id)}}">
+                                        @if($seller!=NUll)
+                                            {{$seller->vendorname}}
+                                        @endif</a></h6>
                             </div>
                         </div>
 

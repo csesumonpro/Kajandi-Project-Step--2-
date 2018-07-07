@@ -308,26 +308,30 @@
                     </div>
                     {!! Form::close() !!}
 
-                    {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
+                    {!! Form::open(['url'=>'sort-by-time','method'=>'GET']) !!}
                     <div class="category-filters-section">
+                      <?php
+                            $time = \App\SellerProduct::all();
+
+                        ?>
                         <h3 class="widget-title-sm">Add On</h3>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Less Than 1yr (02)
+                                <input  name='year' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=0 />Less Than 1yr (02)
                             </label>
                         </div>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />1 Year (03)
+                                <input  name='year' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=1 />1 Year (03)
                             </label>
                         </div>
                         <div class='checkbox'>
                             <label>
-                                <input class='i-check form' name='model[]' type='checkbox' value=1 />More Than 1yr (03)
+                                <input  name='year' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=2 />More Than 1yr (03)
                             </label>
                         </div>
                     </div>
-                    {{--{!! Form::close() !!}--}}
+                    {!! Form::close() !!}
 
 
                 </aside>

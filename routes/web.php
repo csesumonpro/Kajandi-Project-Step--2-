@@ -51,8 +51,6 @@ Route::get('/product-by-supply-type','FSortByController@product_by_supply_type')
 Route::get('/product-by-po-delivery','FSortByController@product_by_po_delivery')->name('product-by-po-delivery');
 Route::get('/product-by-pricing','FSortByController@product_by_pricing')->name('product-by-pricing');
 
-
-
 //Product sortBy Route End
 
 //Cart Route Start
@@ -93,7 +91,9 @@ Route::get('/order-complete','CheckoutController@order_complete')->name('order-c
 Route::POST('/write-customer-review','CustomerReviewController@write_customer_review')->name('write-customer-review');
 
 //Customer Review End
-
+//Seller Product start
+Route::get('seller-product/{id}','FSellerProductController@seller_profile')->name('seller-product');
+//Seller Product end
 
 //==========================Front End ==========================//
 //CustomUserController route start
