@@ -4,13 +4,23 @@
 
     <div class="container">
         <header class="page-header">
-            <h1 class="page-title">Welding &amp; Fabrication</h1>
+            @if(isset($cat) && $cat!=NULL)
+            <h1 class="page-title">{{App\Category::find($cat)->cat_name}}</h1>
+
             <ol class="breadcrumb page-breadcrumb">
-                <li><a href="../index.html">Home</a>
+                <li><a href="{{url('/')}}">Home</a>
                 </li>
-                <li><a href="#">Welding &amp; Fabrication</a>
+                <li><a href="{{route('product-category',App\Category::find($cat)->id)}}">{{App\Category::find($cat)->cat_name}}</a>
                 </li>
             </ol>
+                @else
+                <h1 class="page-title">Product Page</h1>
+
+                <ol class="breadcrumb page-breadcrumb">
+                    <li><a href="{{url('/')}}">Home</a>
+                    </li>
+                </ol>
+            @endif
             <ul class="category-selections clearfix">
                 <li>
                     <a class="fa fa-th-large category-selections-icon " href="#" id="grid_view"></a>
@@ -308,30 +318,26 @@
                     </div>
                     {!! Form::close() !!}
 
-                    {!! Form::open(['url'=>'sort-by-time','method'=>'GET']) !!}
+                    {{--{!! Form::open(['url'=>'product-sorting','method'=>'GET']) !!}--}}
                     <div class="category-filters-section">
-                      <?php
-                            $time = \App\SellerProduct::all();
-
-                        ?>
                         <h3 class="widget-title-sm">Add On</h3>
                         <div class='checkbox'>
                             <label>
-                                <input  name='year' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=0 />Less Than 1yr (02)
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />Less Than 1yr (02)
                             </label>
                         </div>
                         <div class='checkbox'>
                             <label>
-                                <input  name='year' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=1 />1 Year (03)
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />1 Year (03)
                             </label>
                         </div>
                         <div class='checkbox'>
                             <label>
-                                <input  name='year' type='checkbox' onclick='if(this.checked){this.form.submit()}' value=2 />More Than 1yr (03)
+                                <input class='i-check form' name='model[]' type='checkbox' value=1 />More Than 1yr (03)
                             </label>
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                    {{--{!! Form::close() !!}--}}
 
 
                 </aside>
@@ -493,9 +499,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8 col-sm-8">
+
                                                     <div class="details-option">
-                                                        <a href="#"><i class="fa fa-plus"></i> Compare</a>
+                                                        <a href="{{route('add-to-compare',$product->id)}}"><i class="fa fa-plus"></i> Compare</a>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -512,16 +520,7 @@
 
                 <div class="row" id="row" data-gutter="10">
                     <div class="vendor-pagination">
-
-                        {{--{{ $all_products->count()}}--}}
-                        {{--@if(isset($item_by) && $item_by=='nine_item' && $item_by=='twelve_item' && $item_by=='eighteen_item' && $item_by=='all_item')--}}
-                        {{--@else--}}
                         {{--<span class="text-center"> {{ $all_products->links() }}</span>--}}
-                        {{--@endif--}}
-                        @if(function_exists('links'))
-                            <span class="text-center"> {{ $all_products->links() }}</span>
-                        @endif
-
                     </div>
                 </div>
 

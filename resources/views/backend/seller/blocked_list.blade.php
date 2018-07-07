@@ -37,7 +37,9 @@
                                   echo "Distributor";
                                 }elseif($av->vendor_type == 3) {
                                   echo "OEM";
-                                }else{
+                                }elseif($av->ratings == 3 {
+                                   echo "Technicians";
+                               }else{
                                   echo "None";
                                 }
                                ?>

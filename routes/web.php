@@ -51,6 +51,8 @@ Route::get('/product-by-supply-type','FSortByController@product_by_supply_type')
 Route::get('/product-by-po-delivery','FSortByController@product_by_po_delivery')->name('product-by-po-delivery');
 Route::get('/product-by-pricing','FSortByController@product_by_pricing')->name('product-by-pricing');
 
+
+
 //Product sortBy Route End
 
 //Cart Route Start
@@ -64,7 +66,7 @@ Route::POST('/update-cart','CartController@update_cart')->name('update-cart');
 
 //Compare Route Start
 Route::get('/compare','CompareController@compare')->name('compare');
-Route::POST('add-to-compare','CompareController@add_to_compare')->name('add-to-compare');
+Route::get('add-to-compare/{id}','CompareController@add_to_compare')->name('add-to-compare');
 Route::get('/remove-compare-item/{id}','CompareController@remove_compare_item')->name('remove-compare-item');
 Route::get('/login-register','CartController@login_register')->name('login-register');
 
@@ -91,9 +93,7 @@ Route::get('/order-complete','CheckoutController@order_complete')->name('order-c
 Route::POST('/write-customer-review','CustomerReviewController@write_customer_review')->name('write-customer-review');
 
 //Customer Review End
-//Seller Product start
-Route::get('seller-product/{id}','FSellerProductController@seller_profile')->name('seller-product');
-//Seller Product end
+
 
 //==========================Front End ==========================//
 //CustomUserController route start
@@ -173,7 +173,9 @@ Route::get('/faq-answered-list', 'AdminFAQController@faqAnsweredList')->name('fa
 Route::get('/faq-answer-edit/{id}', 'AdminFAQController@faqAnsEdit')->name('faqAnsEdit');
 Route::post('/faq-answer-update/{id}','AdminFAQController@faqAnsUpdate')->name('faqAnsUpdate');
 //END FAQ route
-
+//Seller Product start
+Route::get('seller-product/{id}','FSellerProductController@seller_profile')->name('seller-product');
+//Seller Product end
 
 
 
@@ -269,6 +271,7 @@ Route::get('/unblock-vendor/{id}', 'AdminAddSellerController@unblockVendor')->na
 Route::get('/approved-seller-pro', 'AdminVendorProductController@approvedSellerPro')->name('approvedSellerPro');
 Route::get('/pending-vendor-pro', 'AdminVendorProductController@pendingVendorPro')->name('pendingVendorPro');
 Route::get('/approve-vendor-pro/{id}', 'AdminVendorProductController@approveVendorPro')->name('approveVendorPro');
+Route::get('/block-vendor-pro/{id}', 'AdminVendorProductController@blockVendorPro')->name('blockVendorPro');
 //Vendor Product Approval End
 //Home featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
@@ -328,6 +331,11 @@ Route::get('/seller/product-list', 'SellerProductController@productList')->name(
 Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->name('editProduct');
 Route::post('/seller/update-product/{id}', 'SellerProductController@updateSellerPro')->name('updateSellerPro');
 Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteSellerPro');
+
+Route::get('/seller/edit-profile', 'SellerProfileController@editProfile')->name('editSellerProfile');
+Route::post('/seller/update-profile', 'SellerProfileController@updateProfile')->name('updateVendorProfile');
+Route::get('/seller/edit-profile-primary-details', 'SellerProfileController@editVendorPrimaryDetails')->name('editVendorPrimaryDetails');
+Route::post('/seller/update-profile-primary', 'SellerProfileController@updatePrimaryDetails')->name('updateVendorPrimaryDetails');
 
 //test
 Route::get('/seller/destroy/', 'SellerProductController@deleteMultiPro')->name('deleteMultiPro');

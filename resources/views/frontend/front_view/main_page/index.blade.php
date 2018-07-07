@@ -12,24 +12,24 @@
     @include('frontend.front_view.includes.slider')
 @endsection
 <?php
-$ads_s_1 = App\HomeAdvert::where('ads_section', 1)
+$ads_s_1 = App\HomeAdvert::where('ads_section', 1)->where('pro_status', 1)
     ->join('seller_products', 'seller_products.id', '=', 'product_id')
     ->join('categories','categories.id', '=', 'pro_cat_id')
     ->orderBy('ads_id', 'desc')
     ->limit(3)
     ->get();
-$today_f = App\HomeAdvert::where('ads_section', 2)
+$today_f = App\HomeAdvert::where('ads_section', 2)->where('pro_status', 1)
     ->join('seller_products','seller_products.id', '=', 'product_id')
     //  ->select('seller_products.id as pid')
     ->orderBy('home_adverts.ads_id', 'desc')
     ->limit(20)
     ->get();
-$best_f = App\HomeAdvert::where('ads_section', 3)
+$best_f = App\HomeAdvert::where('ads_section', 3)->where('pro_status', 1)
     ->join('seller_products','seller_products.id', '=', 'product_id')
     ->orderBy('ads_id', 'desc')
     ->limit(8)
     ->get();
-$ads_s_2 = App\HomeAdvert::where('ads_section', 4)
+$ads_s_2 = App\HomeAdvert::where('ads_section', 4)->where('pro_status', 1)
     ->join('seller_products', 'seller_products.id', '=', 'product_id')
     ->join('categories','categories.id', '=', 'pro_cat_id')
     ->orderBy('ads_id', 'desc')
@@ -65,32 +65,7 @@ $ads_s_2 = App\HomeAdvert::where('ads_section', 4)
                     </div>
                 </div>
         @endforeach
-        <!--  <div class="col-md-4">
-            <div class="banner" style="background-color:#EF4D9C;">
-                <a class="banner-link" href="#"></a>
-                <div class="banner-caption-top-right">
-                    <h5 class="banner-title">Welding Machines</h5>
-                    <p class="banner-desc">Tig Machine</p>
-                    <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
-                    </p>
-                    <p class="price">$33</p>
-                </div>
-                <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/tig_welding.png" alt="Image Alternative text" title="{{$ads->pro_name}}" style="bottom: -22px; left: 0; width: 235px;">
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="banner" style="background-color:#FEA92E;">
-                <a class="banner-link" href="#"></a>
-                <div class="banner-caption-bottom-left">
-                    <h5 class="banner-title">HVAC</h5>
-                    <p class="banner-desc">Rooftops Airconditioning.</p>
-                    <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
-                    </p>
-                    <p class="price">$33</p>
-                </div>
-                <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/Tipo-Paquete-Condensado-por-Aire-Marca-Trane-de-5-TR-en-adelante.png" alt="Image Alternative text" title="{{$ads->pro_name}}" style="top: -4px; right: -15px; width: 220px;">
-            </div>
-        </div> -->
+
         </div>
 
         <div class="gap"></div>
@@ -218,22 +193,7 @@ $ads_s_2 = App\HomeAdvert::where('ads_section', 4)
                 </div>
             @endforeach
         </div>
-        {{--@endforeach--}}
-        <div class="gap"></div>
-        <div class="row" data-gutter="15">
-        <!--<div class="col-md-6">
-                <div class="banner" style="background-color:#9C7B60;">
-                    <a class="banner-link" href="#"></a>
-                    <div class="banner-caption-left">
-                        <h5 class="banner-title">HVAC</h5>
-                        <p class="banner-desc">Heating and Cooling Systems Air Filter</p>
-                        <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
-                        </p>
-                        <p class="price">$100</p>
-                    </div>
-                    <img class="banner-img" src="{{asset('public/frontend/img/')}}/home/airqual2.png" alt="Image Alternative text" title="{{$ads->pro_name}}" style="bottom: -8px; right: 11px; width: 238px;">
-                </div>
-            </div>-->
+      
             @foreach($ads_s_2 as $ads)
                 <div class="col-md-6">
                     <div class="banner" style="background-color:{{$ads->banner_color}};">
