@@ -13,11 +13,11 @@ class CreateSellerProductsTable extends Migration
     {
         Schema::create('seller_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('seller_id')->unsigned();
+            $table->integer('seller_id')->unsigned()->nullable();
             $table->integer('pro_status')->comment('0=>Inactive, 1=>Inactive, 2=>Low Stock, 3=>Out of Stock ');
             $table->string('pro_name');
             $table->string('pro_generic_name');
-            $table->string('pro_description');
+            $table->text('pro_description');
             $table->string('pro_keyword')->nullable();
             $table->string('part_number')->nullable();
 
@@ -25,10 +25,10 @@ class CreateSellerProductsTable extends Migration
             $table->integer('supply_type')->nullable()->comment('1=>OEM / Manufacturer, 2=>Distributor, 3=>Wholesaler, 4=>Retailer');
             $table->integer('pro_cat_id')->unsigned();
             $table->integer('pro_subcat_id')->unsigned();
-            $table->string('pro_image')->nullble();
+            $table->string('pro_image')->nullable();
             $table->integer('manufacture_id')->unisgned();//
 
-            $table->integer('conditions')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used');
+            $table->integer('conditions')->comment('1=>New, 2=>Refurbished, 3=>Fairly Used')->nullable();
             $table->integer('pro_warranty')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');
             $table->integer('pro_gurrantee')->nullable()->comment('1=>Less Then 0, 2=>One Year, 3=>Above One Year');
             //$table->integer('source')->comment('1=>OEM, 2=>Retailer,3=>Distributor');
@@ -38,7 +38,7 @@ class CreateSellerProductsTable extends Migration
             $table->string('a_img_4')->nullable();
 
             $table->string('pro_color')->nullable();//
-            $table->string('speacial_feature')->nullable();
+            $table->text('speacial_feature')->nullable();
 
             $table->integer('small_order_accpeted')->nullable()->comment('1=>Yes, 2=>No');
             $table->integer('minumum_order_qty')->nullable();
@@ -50,8 +50,8 @@ class CreateSellerProductsTable extends Migration
             $table->integer('stock_qty');
             $table->string('sample_fee')->nullable();
             $table->string('currency_in_naira')->nullable();
-            $table->string('credit_payment_details')->nullable();// unsigned needed type Integer
-            $table->string('optional_description')->nullable();
+            $table->text('credit_payment_details')->nullable();// unsigned needed type Integer
+            $table->text('optional_description')->nullable();
 
             $table->integer('length')->nullable();
             $table->integer('width')->nullable();
@@ -76,7 +76,7 @@ class CreateSellerProductsTable extends Migration
             $table->integer('duration_out_state')->nullable()->comment('1=>24 Hours, 2=>48 Hours, 3=>3 Days, 4=>5 Days, 5=>7 Days, 6=>9 Days, 7=>20 days ');
 
             $table->integer('strength_of_meterial')->nullable()->comment('1=>Grade 1, 2=>Grade 2, 3=>Grade 3, 4=>Grade 4 ');
-            $table->string('seller_remark')->nullable();
+            $table->text('seller_remark')->nullable();
 
 
 

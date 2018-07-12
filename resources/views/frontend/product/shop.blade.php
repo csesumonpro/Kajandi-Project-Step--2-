@@ -386,7 +386,8 @@
                                             <div class="row" id="data" data-gutter="10">
                                                 <div class="pro-info">
                                                     <p class="name"><span class="tag">My Product</span>
-                                                        <?php $seller = DB::table('sellers')->where('user_id',$product->seller_id)->first();?>
+                                                        <?php
+                                                        $seller = DB::table('sellers')->where('user_id',$product->seller_id)->first();?>
                                                         @if($seller!=NUll)
                                                             {{$seller->vendorname}}
                                                         @endif
@@ -488,7 +489,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-8 col-sm-8">
-                                                    <button class="btn btn-primary" href="#">Contact supplier</button>
+                                                    <a class="btn btn-primary" href="{{route('contact-supplier',$product->id)}}">Contact supplier</a>
                                                 </div>
 
                                             </div>

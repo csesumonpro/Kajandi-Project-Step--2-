@@ -51,8 +51,6 @@ Route::get('/product-by-supply-type','FSortByController@product_by_supply_type')
 Route::get('/product-by-po-delivery','FSortByController@product_by_po_delivery')->name('product-by-po-delivery');
 Route::get('/product-by-pricing','FSortByController@product_by_pricing')->name('product-by-pricing');
 
-
-
 //Product sortBy Route End
 
 //Cart Route Start
@@ -75,10 +73,10 @@ Route::get('/login-register','CartController@login_register')->name('login-regis
 Route::get('/wishlist','WishlistController@my_wishlish')->name('wishlist');
 Route::GET('add-to-wishlist/{id}','WishlistController@add_to_wishlist')->name('add-to-wishlist');
 Route::GET('remove-wishlist-item/{id}','WishlistController@remove_wishlist_item')->name('remove-wishlist-item');
-
 //Wishlist Route End
 
 //Checkout Controller Start
+Route::get('/pre-checkout', 'CheckoutController@preCheckout')->name('preCheckout');
 Route::get('/checkout','CheckoutController@checkout')->name('checkout');
 Route::get('/shipping','CheckoutController@shipping')->name('shipping');
 Route::get('/billing','CheckoutController@billing')->name('billing');
@@ -91,8 +89,12 @@ Route::get('/order-complete','CheckoutController@order_complete')->name('order-c
 
 //Customer Review Start
 Route::POST('/write-customer-review','CustomerReviewController@write_customer_review')->name('write-customer-review');
-
 //Customer Review End
+//Contact Suppler start
+Route::get('contact-supplier/{pro_id}','ContactSupplierController@contact_supplier')->name('contact-supplier');
+Route::POST('save-customer-request','ContactSupplierController@save_customer_request')->name('save-customer-request');
+
+//Contact Suppler end
 
 
 //==========================Front End ==========================//
@@ -272,6 +274,11 @@ Route::get('/approved-seller-pro', 'AdminVendorProductController@approvedSellerP
 Route::get('/pending-vendor-pro', 'AdminVendorProductController@pendingVendorPro')->name('pendingVendorPro');
 Route::get('/approve-vendor-pro/{id}', 'AdminVendorProductController@approveVendorPro')->name('approveVendorPro');
 Route::get('/block-vendor-pro/{id}', 'AdminVendorProductController@blockVendorPro')->name('blockVendorPro');
+Route::get('/edit-vendor-pro/{id}', 'AdminVendorProductController@editVendorPro')->name('editVendorPro');
+Route::post('/update-vendor-pro/{id}', 'AdminVendorProductController@updateVendorPro')->name('updateVendorPro');
+Route::get('/add-vendor-pro', 'AdminVendorProductController@addVendorPro')->name('addVendorPro');
+Route::post('/post-vendors-pro', 'AdminVendorProductController@postVendorPro')->name('postVendorssPro');
+Route::get('/delete-vendor-pro/{id}', 'AdminVendorProductController@deleteVendorProduct')->name('deleteVendorProduct');
 //Vendor Product Approval End
 //Home featured By Vendor
 Route::get('/add-home-advert', 'AdvertController@addHomeAdvert')->name('addHomeAdvert');
@@ -331,14 +338,18 @@ Route::get('/seller/product-list', 'SellerProductController@productList')->name(
 Route::get('/seller/edit-product/{id}', 'SellerProductController@editProduct')->name('editProduct');
 Route::post('/seller/update-product/{id}', 'SellerProductController@updateSellerPro')->name('updateSellerPro');
 Route::get('/seller/delete-product/{id}', 'SellerProductController@deleteProduct')->name('deleteSellerPro');
+Route::delete('/seller/delete-selected-product', 'SellerProductController@multiDeletePro')->name('multiDeletePro');
+//Route::get('/seller/low-stock-product/{id}', 'SellerProductController@lowStockPro')->name('lowStockPro');
 
+//Filtering Vendor Products
+Route::get('/seller/list-by-status', 'SellerProductController@listByStatus')->name('listByStatus');
+Route::get('/seller/list-by-cat', 'SellerProductController@listVendorProductByCat')->name('listVendorProductByCat');
+
+//Vendor Profile
 Route::get('/seller/edit-profile', 'SellerProfileController@editProfile')->name('editSellerProfile');
 Route::post('/seller/update-profile', 'SellerProfileController@updateProfile')->name('updateVendorProfile');
 Route::get('/seller/edit-profile-primary-details', 'SellerProfileController@editVendorPrimaryDetails')->name('editVendorPrimaryDetails');
 Route::post('/seller/update-profile-primary', 'SellerProfileController@updatePrimaryDetails')->name('updateVendorPrimaryDetails');
 
-//test
-Route::get('/seller/destroy/', 'SellerProductController@deleteMultiPro')->name('deleteMultiPro');
-Route::get('/seller/json', 'SellerProductController@json')->middleware('ajax');
-// Route for list of users with specific status in json format
-Route::get('/seller/json/{pro_status}', 'SellerProductController@json')->middleware('ajax');
+//Vendor Order List
+Route::get('seller/order-list', 'SellerOrderController@VendorOrderList')->name('VendorOrderList');

@@ -1,0 +1,51 @@
+============== PROJECT LOG==================
+COMPLETED STAGE
+*) Customer/Buyer Authentication
+*) Vendor/Seller Authentication
+*) Admin Authentication
+==================FRONT VIEW========================
+1) Dynamic Category
+2) Search Product
+3) Baner Section 1
+4) Today Featured
+5) Best of Tech
+6) Banner Section 2
+7) Shop By Category
+8) Shoping Cart
+9) Shop Page
+10) Product Filter
+
+
+==================ADMIN PANEL=======================
+1) CRUD Manufacture
+2) CRUD Category
+3) CRUD Sub Category
+4) CRUD Product Model
+5) CRUD Product Unit
+6) CRUD Company Product(Rejected)
+7) CRUD Vendor/Seller
+8) Pending and Block Vendor/Seller
+9) Pending and Approved Vendor/Seller List
+10) Manage Question and Answer
+11) CRUD Home Advertise
+12) CRUD Manage User
+13) CRUD Blog Category
+14) CRUD Blog Post
+16) Subscriber List
+17) Send Signle and Bulk Email
+18) FAQ Answer and Manage
+19) Footer Bottom(Social, Contact, App Download link)
+20) CRUD Page
+==================VENDOR PANEL=======================
+1) Add Vendor Product
+2) View Vendor Product
+3) Delete Vendor Product
+4) Update Profile
+5) Update Primary Details
+==================CUSTOMER PANEL=======================
+
+Product Single Page:
+Single Page dynamic product Info
+Single Page Review && Rating, Add to Cart, Which List added
+Product Category Page All Filter added.
+

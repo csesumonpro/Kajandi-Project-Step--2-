@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\ContactSupplier;
 use Illuminate\Http\Request;
-
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -25,4 +26,5 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
 }
