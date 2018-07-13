@@ -1,0 +1,7 @@
+https://www.islamicfinder.org/prayer-times/monthlyPrayer?month=5&year=2018&type=Gregorian
+http://webapp.fianz.com/prayer-times/
+https://api.aladhan.com/timingsByAddress/9-4-2018?address=Dubai,UAE&method=8
+http://ip-api.com/json
+http://api.aladhan.com/v1/calendar?latitude=51.508515&longitude=-0.1254872&method=2&month=4&year=2017
+
+http://api.aladhan.com/v1/calendarByCity?city=London&country=United%20Kingdom&method=2&month=04&year=2017

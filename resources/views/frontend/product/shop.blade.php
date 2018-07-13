@@ -33,7 +33,7 @@
                     <select onchange="this.form.submit()" class="category-selections-select" name="product_sort">
                         <option selected disabled>--Default--</option>
                         <option id="new_est" value="new_est">Newest First</option>
-                        <option id="best_rated" value="best_rated">Best Raited</option>
+                        {{--<option id="best_rated" value="best_rated">Best Raited</option>--}}
                         <option id="low_price" value="low_price">Price : Lowest First</option>
                         <option id="3" value="high_price">Price : Highest First</option>
                         <option id="high_price" value="a_to_z">Title : A - Z</option>

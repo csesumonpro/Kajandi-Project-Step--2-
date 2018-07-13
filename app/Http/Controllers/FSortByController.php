@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\CustomerReview;
 use Illuminate\Http\Request;
 use App\Product;
 use DB;
@@ -95,7 +96,7 @@ class FSortByController extends Controller{
             return view('frontend.product.shop')
                 ->with(compact('all_products','sort_by'));
         }elseif($request->product_sort=='best_rated'){
-            echo "BEST Rated Comming ....";
+
         }elseif($request->product_sort=='low_price'){
             $all_products = SellerProduct::orderBy('unit_price','asc')->where('pro_status',1)->paginate(12);
             return view('frontend.product.shop')
